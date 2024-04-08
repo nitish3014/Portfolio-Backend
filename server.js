@@ -1,5 +1,3 @@
-
-
 // server.js
 
 const express = require('express');
@@ -37,6 +35,23 @@ app.post('/send-email', (req, res) => {
       res.status(200).send('Email sent successfully!');
     }
   });
+});
+
+// Serve a simple HTML page for UI
+app.get('/', (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Server Status</title>
+    </head>
+    <body>
+      <h1>Server running on port 5000</h1>
+    </body>
+    </html>
+  `);
 });
 
 const PORT = process.env.PORT || 5000;
