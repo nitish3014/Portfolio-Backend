@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
       <title>Server Status</title>
     </head>
     <body>
-      <h1>Server running on port 5000</h1>
+      <h1>Backend Server running on port 5000</h1>
     </body>
     </html>
   `);
