@@ -3,6 +3,8 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+require('dotenv').config();
+
 
 const app = express();
 app.use(cors());
@@ -48,11 +50,11 @@ app.get('/', (req, res) => {
       <title>Server Status</title>
     </head>
     <body>
-      <h1>Backend Server running on port 5000</h1>
+      <h1>Server running on port 5000</h1>
     </body>
     </html>
   `);
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT ;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
