@@ -16,14 +16,13 @@ const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
     user: 'nitish1dalvi@gmail.com', // Your Gmail username
-    pass: 'cxvb csom eutv dvht'      // Your Gmail password/token
+    pass: 'cxvb csom eutv dvht'      // Your Gmail app password/token
   }
 });
 
 // POST endpoint to send email
 app.post('/send-email', (req, res) => {
-  console.log("Received request body:", req.body); // Debug log
-
+  console.log("Received request body:", req.body);
   const { name, email, phone, message } = req.body;
   
   // Validate that all fields are provided
@@ -34,8 +33,8 @@ app.post('/send-email', (req, res) => {
 
   // Build the email options including the phone field
   const mailOptions = {
-    from: 'nitish1dalvi@gmail.com',         // Sender email
-    to: 'nitish1dalvi@gmail.com',           // Receiver email
+    from: 'nitish1dalvi@gmail.com',
+    to: 'nitish1dalvi@gmail.com',
     subject: 'New Contact Form Submission',
     text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
     html: `<p><strong>Name:</strong> ${name}</p>
@@ -44,7 +43,7 @@ app.post('/send-email', (req, res) => {
            <p><strong>Message:</strong> ${message}</p>`
   };
 
-  // Log mailOptions for debugging
+  // Log the email options for debugging
   console.log("Sending email with options:", mailOptions);
 
   // Send the email
