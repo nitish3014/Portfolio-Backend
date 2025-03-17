@@ -32,7 +32,6 @@ app.post('/send-email', (req, res) => {
   }
 
   // Build the email options including the phone field.
-  // Here we use an HTML version to ensure the phone number appears clearly.
   const mailOptions = {
     from: 'nitish1dalvi@gmail.com',         // Sender email
     to: 'nitish1dalvi@gmail.com',           // Receiver email
@@ -43,6 +42,9 @@ app.post('/send-email', (req, res) => {
            <p><strong>Phone:</strong> ${phone}</p>
            <p><strong>Message:</strong> ${message}</p>`
   };
+
+  // Log mailOptions to verify that phone is included
+  console.log("Sending email with options:", mailOptions);
 
   // Send the email
   transporter.sendMail(mailOptions, (error, info) => {
