@@ -22,7 +22,8 @@ const transporter = nodemailer.createTransport({
 
 // POST endpoint to send email
 app.post('/send-email', (req, res) => {
-  console.log("Received request body:", req.body);
+  console.log("Received request body:", req.body); // Debug log
+
   const { name, email, phone, message } = req.body;
   
   // Validate that all fields are provided
@@ -31,7 +32,7 @@ app.post('/send-email', (req, res) => {
     return res.status(400).send('All fields are required.');
   }
 
-  // Build the email options including the phone field.
+  // Build the email options including the phone field
   const mailOptions = {
     from: 'nitish1dalvi@gmail.com',         // Sender email
     to: 'nitish1dalvi@gmail.com',           // Receiver email
@@ -43,7 +44,7 @@ app.post('/send-email', (req, res) => {
            <p><strong>Message:</strong> ${message}</p>`
   };
 
-  // Log mailOptions to verify that phone is included
+  // Log mailOptions for debugging
   console.log("Sending email with options:", mailOptions);
 
   // Send the email
@@ -57,7 +58,7 @@ app.post('/send-email', (req, res) => {
   });
 });
 
-// Serve a simple HTML page for UI/testing
+// Serve a simple HTML page for testing
 app.get('/', (req, res) => {
   res.send(`
     <!DOCTYPE html>
