@@ -31,12 +31,17 @@ app.post('/send-email', (req, res) => {
     return res.status(400).send('All fields are required.');
   }
 
-  // Build the email options including the phone field
+  // Build the email options including the phone field.
+  // Here we use an HTML version to ensure the phone number appears clearly.
   const mailOptions = {
     from: 'nitish1dalvi@gmail.com',         // Sender email
     to: 'nitish1dalvi@gmail.com',           // Receiver email
     subject: 'New Contact Form Submission',
-    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
+    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
+    html: `<p><strong>Name:</strong> ${name}</p>
+           <p><strong>Email:</strong> ${email}</p>
+           <p><strong>Phone:</strong> ${phone}</p>
+           <p><strong>Message:</strong> ${message}</p>`
   };
 
   // Send the email
